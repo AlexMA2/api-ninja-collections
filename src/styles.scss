@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tooltip {
+    position: absolute;
+    z-index: 9999999;
+    pointer-events: none;
+    user-select: none;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    width: max-content;
+    text-align: center;
+
+    top: 100%;
+    left: 12.5%;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+:has(> .tooltip) {
+    position: relative;
+}
+
+:has(> .tooltip):hover .tooltip {
+    opacity: 1;
+}
+
+.tooltip::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.3);
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}

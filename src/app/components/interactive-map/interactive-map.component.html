@@ -1,0 +1,37 @@
+<div id="map" class="w-full h-full max-w-md relative">
+    @if (continents) { @for (item of markerPositions; track $index) {
+    <div
+        class="absolute flex flex-col"
+        [style.top.px]="item.top"
+        [style.left.px]="item.left"
+    >
+        <div class="relative">
+            <svg
+                class="w-6 h-6 z-30"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    [attr.fill]="item.color"
+                    d="M12 2C7.589 2 4 5.589 4 9.995C3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12c0-4.411-3.589-8-8-8m0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4s4 1.79 4 4s-1.79 4-4 4"
+                />
+            </svg>
+            <div
+                class="rounded-full -mt-[6px] ml-2 z-20 bg-white w-2 h-2 ring-black ring-1"
+            ></div>
+            <div class="tooltip" role="tooltip">
+                {{ item.tooltip }}
+            </div>
+        </div>
+    </div>
+
+    } }
+
+    <img
+        class="object-contain z-10"
+        src="/images/World_Map.png"
+        alt="A world map with evert continent highlighted"
+    />
+</div>
